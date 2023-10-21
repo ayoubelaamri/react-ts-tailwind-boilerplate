@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createContext, FC } from "react";
-import data from "./data.json";
 import { IAppContext } from "../@types/IAppContext";
 import { useLocation } from "react-router-dom";
 
