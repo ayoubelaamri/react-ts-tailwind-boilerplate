@@ -1,12 +1,16 @@
 import React from 'react';
 import './style.css'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+
+import { AuthProvider } from './context/AuthContext';
+import { AppProvider } from './context/AppContext';
+
 import HomeLayout from './layouts/HomeLayout';
 import AuthLayout from './layouts/AuthLayout';
 import AdminLayout from './layouts/AdminLayout';
-import Landing from './views/Landing';
-import NotFound from './views/NotFound';
 
+const Landing = React.lazy(() => import("./views/Landing"));
+const NotFound = React.lazy(() => import("./views/NotFound"));
 const SignIn = React.lazy(() => import("./views/auth/SignIn"));
 const SignUp = React.lazy(() => import("./views/auth/SignUp"));
 
@@ -52,9 +56,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="text-neutral font-roboto">
-      <RouterProvider router={router} />
-    </div>
+    <AppProvider>
+      <AuthProvider>
+        <div className="text-neutral font-roboto">
+          <RouterProvider router={router} />
+        </div>
+      </AuthProvider>
+    </AppProvider>
   );
 }
 
