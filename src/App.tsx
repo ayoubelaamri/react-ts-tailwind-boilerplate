@@ -5,14 +5,16 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 
-import HomeLayout from './layouts/HomeLayout';
-import AuthLayout from './layouts/AuthLayout';
-import AdminLayout from './layouts/AdminLayout';
+import HomeLayout from 'layouts/HomeLayout';
+import AuthLayout from 'layouts/AuthLayout';
+import AdminLayout from 'layouts/AdminLayout';
 
-const Landing = React.lazy(() => import("./views/Landing"));
-const NotFound = React.lazy(() => import("./views/NotFound"));
-const SignIn = React.lazy(() => import("./views/auth/SignIn"));
-const SignUp = React.lazy(() => import("./views/auth/SignUp"));
+const SignIn = React.lazy(() => import("views/auth/SignIn"));
+const SignUp = React.lazy(() => import("views/auth/SignUp"));
+const Landing = React.lazy(() => import("views/Landing"));
+const Dashboard = React.lazy(() => import("views/admin/Dashboard"));
+const NotFound = React.lazy(() => import("views/NotFound"));
+
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,16 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminLayout />,
-    children: []
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      }
+    ]
   },
   {
     path: "*",
@@ -58,9 +69,11 @@ function App() {
   return (
     <AppProvider>
       <AuthProvider>
-        <div className="text-neutral font-roboto">
-          <RouterProvider router={router} />
-        </div>
+      <div className="h-screen w-screen grid place-items-center bg-gray-200 p-6 md:p-10 bg-[url('assets/images/bg.jpg')] bg-cover bg-center text-neutral font-roboto">
+      <div className="bg-white/50 backdrop-blur-lg w-full h-full rounded-3xl shadow-xl border-4 border-white">
+        <RouterProvider router={router} />
+      </div>
+    </div>
       </AuthProvider>
     </AppProvider>
   );
