@@ -1,5 +1,5 @@
-import React from 'react';
 import './style.css'
+import React from 'react';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
 import { AuthProvider } from './context/AuthContext';
@@ -9,12 +9,11 @@ import HomeLayout from 'layouts/HomeLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import AdminLayout from 'layouts/AdminLayout';
 
+const NotFound = React.lazy(() => import("components/NotFound"));
 const SignIn = React.lazy(() => import("views/auth/SignIn"));
 const SignUp = React.lazy(() => import("views/auth/SignUp"));
-const Landing = React.lazy(() => import("views/Landing"));
+const Landing = React.lazy(() => import("views/home/Landing"));
 const Dashboard = React.lazy(() => import("views/admin/Dashboard"));
-const NotFound = React.lazy(() => import("views/NotFound"));
-
 
 const router = createBrowserRouter([
   {
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
     element: <HomeLayout />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Landing />,
       },
     ]

@@ -8,7 +8,7 @@ export default function HomeLayout() {
   return (
     <div className="flex flex-col h-full w-full">
       <Navbar />
-      <div className="h-full w-full p-6 overflow-auto">
+      <div className="grid place-items-center h-full w-full p-6">
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>

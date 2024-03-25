@@ -6,9 +6,9 @@ const AppContext = createContext<Partial<IAppContext>>({});
 export default AppContext;
 
 export const AppProvider = ({ children }: any) => {
-  const [isSidebarOpen, setIsSidbarOpen] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  
+
+  const [isSidebarOpen, setIsSidbarOpen] = useState<boolean>(true);
   const toggleSidebar = () => setIsSidbarOpen(!isSidebarOpen);
 
   return (

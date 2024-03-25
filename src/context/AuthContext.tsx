@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: any) => {
     if (creds.email === "admin@senorjob.com" && creds.password === "admin") {
       const user = {
         id: "1",
-        name: "Ayoub EL AAMRI",
+        name: "Admin",
         email: creds.email,
       };
       setUser(user);

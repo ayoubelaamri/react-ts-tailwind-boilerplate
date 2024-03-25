@@ -1,10 +1,10 @@
-import React, { Suspense, useContext } from "react";
+import { Suspense, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Loading from "../components/ui/Loading";
 import Footer from "components/Footer";
-import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 import AppContext from "context/AppContext";
+import NavAdmin from "components/NavAdmin";
 
 export default function AdminLayout() {
   const { isSidebarOpen } = useContext(AppContext);
@@ -18,9 +18,9 @@ export default function AdminLayout() {
       </div>
       <div className="flex flex-col w-full h-full">
         <div className="w-full h-[70px]">
-          <Navbar />
+          <NavAdmin />
         </div>
-        <div className="h-full w-full p-6 overflow-auto">
+        <div className="h-full w-full p-6">
           <div className="h-[calc(100%-4em)] md:h-full">
             <Suspense fallback={<Loading />}>
               <Outlet />
