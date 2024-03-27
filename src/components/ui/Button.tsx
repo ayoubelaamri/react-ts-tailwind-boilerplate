@@ -1,38 +1,39 @@
+import LoadingDots from "components/atoms/animations/LoadingDots";
 import React from "react";
 
 interface Props {
-  border: string;
-  color: string;
+  className?: string;
+  size?: "sm" | "md" | "lg";
+  isAction?: boolean;
+  isLoading?: boolean;
   children?: React.ReactNode;
-  height: string;
   onClick: () => void;
-  radius: string
-  width: string;
 }
 
-const Button: React.FC<Props> = ({ 
-    border,
-    color,
-    children,
-    height,
-    onClick, 
-    radius,
-    width
-  }) => { 
+const Button: React.FC<Props> = ({
+  className = "",
+  size = "md",
+  isAction = false,
+  isLoading = false,
+  children,
+  onClick,
+}) => {
   return (
-    <button 
+    <button
+      className={`shadow-lg rounded-lg font-semibold ${
+        isAction && "bg-gradient-to-br from-primary1 to-primary2 text-neutral2"
+      } ${size === "sm" && "px-3 py-2 text-sm"} ${
+        size === "md" && "px-5 py-2 text-md"
+      } ${size === "lg" && "px-6 py-3 text-lg"} ${className}`}
       onClick={onClick}
-      style={{
-         backgroundColor: color,
-         border,
-         borderRadius: radius,
-         height,
-         width
-      }}
     >
-    {children}
+      {!isLoading ? (
+        <div className="flex items-center gap-2">{children}</div>
+      ) : (
+        <LoadingDots />
+      )}
     </button>
   );
-}
+};
 
 export default Button;

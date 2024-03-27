@@ -1,39 +1,41 @@
 import React from "react";
 
-type Allowed = string | number;
-
-type BaseProps<Value> = {
-  value: Value;
-  onChange: (newValue: Value) => void;
-  options: readonly Value[];
+type SelectProps = {
+  value?: string | number | undefined;
+  onChange: (newValue: string | number | undefined) => void;
+  options: {
+    key: string;
+    value: string | number | undefined;
+  }[];
+  size?: "sm" | "md" | "lg";
 };
 
-// mappers required only in certain cirumstances
-// we could get fancier here and also not require if `Value` has `value`/`label` properties
-type Props<Value> = Value extends Allowed
-  ? BaseProps<Value>
-  : Required<BaseProps<Value>>;
-
-const isAllowed = (v: any): v is Allowed =>
-  typeof v === "string" || typeof v === "number";
-
-export default function Select<Value>({
+export default function Select({
   value,
   onChange,
   options,
-}: Props<Value>) {
-
+  size = "md",
+}: SelectProps) {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(options[e.target.selectedIndex]);
+    onChange(options[e.target.selectedIndex].value);
   };
 
   return (
-    <select value={value as string} onChange={handleChange}>
-      {options.map((item:any,index) => (
-        <option value={item?.value} key={index}>
-          {item?.label}
-        </option>
-      ))}
+    <select
+      className={`rounded-lg shadow-lg font-semibold ${
+        size === "sm" && "text-sm px-3 py-1"
+      } ${size === "md" && "text-md px-3 py-2"} ${
+        size === "lg" && "text-lg px-5 py-2"
+      }`}
+      value={value}
+      onChange={handleChange}
+    >
+      {options.length &&
+        options.map((item: any, index) => (
+          <option value={item?.value} key={index}>
+            {item?.key}
+          </option>
+        ))}
     </select>
   );
 }

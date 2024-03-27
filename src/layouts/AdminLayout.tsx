@@ -1,6 +1,6 @@
 import { Suspense, useContext } from "react";
 import { Outlet } from "react-router-dom";
-import Loading from "../components/ui/Loading";
+import Loading from "../components/atoms/animations/LoadingSpin";
 import Footer from "components/Footer";
 import Sidebar from "components/Sidebar";
 import AppContext from "context/AppContext";

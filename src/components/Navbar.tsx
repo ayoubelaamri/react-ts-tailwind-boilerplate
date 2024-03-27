@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AccountMenu from "./atoms/menus/AccountMenu";
 import NotificationsMenu from "./atoms/menus/NotificationsMenu";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AppContext from "context/AppContext";
 
 export default function Navbar() {
@@ -30,6 +30,13 @@ export default function Navbar() {
       link: "/admin/history",
       end: false,
     },
+    {
+      name: "Contact",
+      icon: "clock-rotate-left",
+      link: "/contact",
+      end: false,
+      isAction: true,
+    },
   ];
 
   return (
@@ -46,12 +53,16 @@ export default function Navbar() {
       <div className="flex items-center gap-6 px-10">
         {menu.map((item, index) => {
           return (
-            <Link
+            <NavLink
               to={item.link}
-              className="font-semibold text-md hover:text-primary border-primary hover:border-b-[3px]"
+              className={`font-semibold text-md border-primary ${
+                item?.isAction
+                  ? "bg-gradient-to-br from-primary1 to-primary2 text-neutral2 rounded-lg shadow-lg px-3 py-2"
+                  : "hover:border-b-[3px] hover:text-primary"
+              }`}
             >
               {item.name}
-            </Link>
+            </NavLink>
           );
         })}
       </div>
