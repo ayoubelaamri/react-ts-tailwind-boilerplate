@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, FC, useContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import IUser from "../@types/IUser";
 import { IAuthContext } from "../@types/IAuthContext";
 

@@ -9,7 +9,7 @@ import HomeLayout from 'layouts/HomeLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import AdminLayout from 'layouts/AdminLayout';
 
-const NotFound = React.lazy(() => import("components/NotFound"));
+const NotFound = React.lazy(() => import("views/NotFound"));
 const SignIn = React.lazy(() => import("views/auth/SignIn"));
 const SignUp = React.lazy(() => import("views/auth/SignUp"));
 const Landing = React.lazy(() => import("views/home/Landing"));

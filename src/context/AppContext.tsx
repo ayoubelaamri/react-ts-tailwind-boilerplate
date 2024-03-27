@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createContext, FC } from "react";
 import { IAppContext } from "../@types/IAppContext";
-import { useLocation } from "react-router-dom";
 
 const AppContext = createContext<Partial<IAppContext>>({});
 export default AppContext;
