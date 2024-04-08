@@ -6,17 +6,9 @@ import LoadingDots from "components/atoms/animations/LoadingDots";
 import Modal from "components/ui/Modal";
 import Select from "components/ui/Select";
 import TextArea from "components/ui/TextArea";
+import LanguageSelector from "components/atoms/LanguageSelector";
+import ThemeSelector from "components/atoms/ThemeSelector";
 
 export default function Hero() {
-  return (
-    <div>
-      <TextArea
-        name={""}
-        placeholder={""}
-        onChange={function (e: ChangeEvent<HTMLTextAreaElement>): void {
-          // throw new Error("Function not implemented.");
-        }}
-      />
-    </div>
-  );
+  return <div>Hero</div>;
 }

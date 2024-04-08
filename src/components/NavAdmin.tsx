@@ -6,7 +6,7 @@ import AppContext from "context/AppContext";
 
 export default function NavAdmin() {
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 px-6 py-2">
+    <div className="flex items-center justify-between border-b border-white dark:border-gray-700 px-6 py-2">
       <div className="flex items-center gap-3 md:hidden">
         <Link to="/">
           <img

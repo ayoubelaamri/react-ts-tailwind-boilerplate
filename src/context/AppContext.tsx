@@ -1,14 +1,24 @@
-import React, { useState, useEffect, createContext, FC } from "react";
-import { IAppContext } from "../@types/IAppContext";
+import { useState, useEffect, createContext, FC } from "react";
+import data_from_json from "context/data/data.json";
+
+export interface IAppContext {
+  isSidebarOpen: boolean;
+  toggleSidebar?: () => void;
+  isLoading: boolean;
+  setIsLoading?: (value: boolean) => void;
+  data: any;
+}
 
 const AppContext = createContext<Partial<IAppContext>>({});
 export default AppContext;
 
 export const AppProvider = ({ children }: any) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const [isSidebarOpen, setIsSidbarOpen] = useState<boolean>(true);
   const toggleSidebar = () => setIsSidbarOpen(!isSidebarOpen);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [data, setData] = useState(data_from_json);
 
   return (
     <AppContext.Provider
@@ -17,6 +27,7 @@ export const AppProvider = ({ children }: any) => {
         toggleSidebar,
         isLoading,
         setIsLoading,
+        data,
       }}
     >
       {children}

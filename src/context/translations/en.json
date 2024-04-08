@@ -1,0 +1,31 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "resume": "Resume",
+    "portfolio": "Portfolio"
+  },
+
+
+  "download_cv": "Download CV",
+  "schedule_meet": "Schedule Meet",
+
+  "welcome": "Welcome !",
+  "i_am": "I am",
+  "ask_anything": "Do not hesitate to ask anything !",
+  "send": "Send",
+
+  "about_headline": "I create The Most Realistic Artificial Intelligence.",
+  "explore": "Explore Now",
+
+  "my_services": "My Services",
+  "testimonials": "Testimonials",
+
+  "my_experience": "Experience",
+  "my_education": "Education",
+  "my_skills": "My Skills",
+  "my_tools": "Tools",
+
+  "view_details": "View Details",
+  "all": "All"
+}

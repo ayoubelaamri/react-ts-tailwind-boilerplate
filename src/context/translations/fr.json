@@ -1,0 +1,30 @@
+{
+  "menu": {
+    "home": "Accueil",
+    "about": "À propos",
+    "resume": "Mon CV ",
+    "portfolio": "Portfolio"
+  },
+
+  "download_cv": "Telecharger CV",
+  "schedule_meet": "Appel Video",
+
+  "welcome": "Bienvenue !",
+  "i_am": "Je suis",
+  "ask_anything": "N'hésitez pas à poser vos questions !",
+  "send": "Envoyer",
+
+  "about_headline": "Je crée l'intelligence artificielle la plus réaliste.",
+  "explore": "Explorer",
+
+  "my_services": "Mes Services",
+  "testimonials": "Témoignages",
+
+  "my_experience": "Experience",
+  "my_education": "Education",
+  "my_skills": "Mes Compétences",
+  "my_tools": "Outils",
+
+  "view_details": "Voir Details",
+  "all": "Tous"
+}

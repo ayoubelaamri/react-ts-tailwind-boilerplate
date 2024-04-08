@@ -3,6 +3,8 @@ import AccountMenu from "./atoms/menus/AccountMenu";
 import NotificationsMenu from "./atoms/menus/NotificationsMenu";
 import { Link, NavLink } from "react-router-dom";
 import AppContext from "context/AppContext";
+import LanguageSelector from "./atoms/LanguageSelector";
+import ThemeSelector from "./atoms/ThemeSelector";
 
 export default function Navbar() {
   const menu = [
@@ -40,20 +42,24 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 px-6 py-2 h-[80px]">
+    <div className="flex items-center justify-between border-b border-white dark:border-gray-700 px-10 py-2 h-[80px]">
       <div className="flex items-center gap-3">
         <Link to="/">
-          <img
+          {/* <img
             src={require("assets/images/logo.png")}
             alt="logo"
             className="h-12"
-          />
+          /> */}
+          <h1 className="font-bold text-xl text-primary font-poppins">
+            BOILERPLATE
+          </h1>
         </Link>
       </div>
-      <div className="flex items-center gap-6 px-10">
+      <div className="flex items-center gap-6">
         {menu.map((item, index) => {
           return (
             <NavLink
+              key={index}
               to={item.link}
               className={`font-semibold text-md border-primary ${
                 item?.isAction
@@ -65,6 +71,10 @@ export default function Navbar() {
             </NavLink>
           );
         })}
+        <div className="flex items-center gap-2 ml-8">
+          <LanguageSelector />
+          <ThemeSelector />
+        </div>
       </div>
     </div>
   );

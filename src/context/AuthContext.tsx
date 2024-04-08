@@ -1,13 +1,27 @@
-import React, { useState, useEffect, createContext } from "react";
-import IUser from "../@types/IUser";
-import { IAuthContext } from "../@types/IAuthContext";
+import { useState, useEffect, createContext } from "react";
 
+export interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  role?: string;
+  avatar?: string;
+  active?: boolean;
+}
+
+export interface IAuthContext {
+  user: IUser | null;
+  setUser: (user: IUser | null) => void;
+  login: (creds: { email: string; password: string }) => void;
+  logout: () => void;
+}
 
 const AuthContext = createContext<Partial<IAuthContext>>({});
 export default AuthContext;
 
 export const AuthProvider = ({ children }: any) => {
-  const [ user, setUser ] = useState<IUser | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
 
   useEffect(() => {
     const user = localStorage.getItem("user");

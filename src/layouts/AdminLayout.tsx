@@ -12,7 +12,7 @@ export default function AdminLayout() {
   return (
     <div className="grid md:flex w-full h-full">
       <div
-        className={`absolute md:relative bottom-8 md:bottom-0 w-full md:w-[150px] border-b-4 border-white`}
+        className={`absolute md:relative bottom-8 md:bottom-0 w-full md:w-[150px] border-b-2 border-white dark:border-gray-700`}
       >
         <Sidebar />
       </div>
