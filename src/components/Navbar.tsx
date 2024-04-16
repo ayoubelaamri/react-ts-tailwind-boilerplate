@@ -1,43 +1,36 @@
-import React, { useContext } from "react";
-import AccountMenu from "./atoms/menus/AccountMenu";
-import NotificationsMenu from "./atoms/menus/NotificationsMenu";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import AppContext from "context/AppContext";
 import LanguageSelector from "./atoms/LanguageSelector";
 import ThemeSelector from "./atoms/ThemeSelector";
 import { Dropdown } from "flowbite-react";
 import AuthContext from "context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
+  const { t } = useTranslation();
 
   const menu = [
     {
-      name: "Home",
+      name: t("menu.home"),
       icon: "home",
       link: "/admin",
       end: true,
     },
     {
-      name: "Chat",
+      name: "Dropdown",
       icon: "comments",
       link: "/admin/chat",
       end: false,
     },
     {
-      name: "Assistant",
+      name: t("menu.about"),
       icon: "circle-info",
       link: "/admin/assistant",
       end: false,
     },
     {
-      name: "History",
-      icon: "clock-rotate-left",
-      link: "/admin/history",
-      end: false,
-    },
-    {
-      name: "Contact",
+      name: t("menu.contact"),
       icon: "clock-rotate-left",
       link: "/contact",
       end: false,
@@ -47,7 +40,7 @@ export default function Navbar() {
 
   return (
     <div className="flex items-center justify-between border-b border-white dark:border-gray-700 px-10 py-2 h-[80px]">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 pr-16">
         <Link to="/">
           {/* <img
             src={require("assets/images/logo.png")}
@@ -75,17 +68,20 @@ export default function Navbar() {
             </NavLink>
           );
         })}
-        <div className="flex items-center gap-2 ml-8">
+      </div>
+      <div className="flex items-center gap-8">
+        <div className="flex items-center gap-2">
           <LanguageSelector />
           <ThemeSelector />
         </div>
-        <div className="flex items-center gap-2 ml-8 hover:text-primary duration-75">
+        <div className="flex items-center gap-2 hover:text-primary duration-75">
           {!user ? (
             <Link to="/auth/sign-in" className="">
               <i className="fa fa-sign-in"></i>
             </Link>
           ) : (
             <Dropdown
+              className=""
               arrowIcon={false}
               inline
               label={
@@ -96,14 +92,21 @@ export default function Navbar() {
               }
             >
               <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
+                <span className="block text-sm">Ayoub EL AAMRI</span>
                 <span className="block truncate text-sm font-medium">
-                  name@flowbite.com
+                  contact@senorjob.com
                 </span>
               </Dropdown.Header>
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Earnings</Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/profile" className="">
+                  Profile
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/settings" className="">
+                  Settings
+                </Link>
+              </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
             </Dropdown>

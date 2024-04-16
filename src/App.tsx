@@ -1,19 +1,19 @@
 import "./style.css";
-import React from "react";
+import React, { useContext } from "react";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
 
-import { AuthProvider } from "./context/AuthContext";
+import { ThemeProvider } from "context/ThemeContext";
+import { LanguageContext, LanguageProvider } from "context/LanguageContext";
 import { AppProvider } from "./context/AppContext";
+import { AuthProvider } from "./context/AuthContext";
 
 import HomeLayout from "layouts/HomeLayout";
 import AuthLayout from "layouts/AuthLayout";
 import AdminLayout from "layouts/AdminLayout";
-import { LanguageProvider } from "context/LanguageContext";
-import { ThemeProvider } from "context/ThemeContext";
 
 const NotFound = React.lazy(() => import("views/NotFound"));
 const SignIn = React.lazy(() => import("views/auth/SignIn"));
@@ -70,19 +70,13 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
+export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
         <AppProvider>
           <AuthProvider>
-            <div id="app" data-theme="dark">
-              <div className="h-screen w-screen grid place-items-center bg-gray-200 p-6 md:p-10 bg-[url('assets/images/bg-light.jpg')] dark:bg-[url('assets/images/bg-dark.jpg')] bg-cover bg-center text-neutral font-roboto">
-                <div className="bg-white/50 dark:bg-black/30 backdrop-blur-lg w-full h-full rounded-3xl shadow-xl border-2 border-white dark:border-gray-700">
-                  <RouterProvider router={router} />
-                </div>
-              </div>
-            </div>
+            <App_root />
           </AuthProvider>
         </AppProvider>
       </LanguageProvider>
@@ -90,4 +84,19 @@ function App() {
   );
 }
 
-export default App;
+const App_root = () => {
+  const { language } = useContext(LanguageContext);
+  return (
+    <div
+      id="app"
+      data-theme="dark"
+      dir={`${language === "ar" ? "rtl" : "ltr"}`}
+    >
+      <div className="h-screen w-screen grid place-items-center bg-gray-200 p-6 md:p-10 bg-[url('assets/images/bg-light.jpg')] dark:bg-[url('assets/images/bg-dark.jpg')] bg-cover bg-center text-neutral font-roboto">
+        <div className="bg-white/50 dark:bg-black/30 backdrop-blur-lg w-full h-full rounded-3xl shadow-xl border-2 border-white dark:border-gray-700">
+          <RouterProvider router={router} />
+        </div>
+      </div>
+    </div>
+  );
+};

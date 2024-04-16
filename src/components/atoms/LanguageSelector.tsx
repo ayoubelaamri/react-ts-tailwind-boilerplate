@@ -11,9 +11,11 @@ export default function LanguageSelector() {
       label=""
       dismissOnClick={true}
       renderTrigger={() => (
-        <button className="py-1 md:py-2 px-3 hover:shadow-lg hover:bg-white dark:hover:bg-gray-700 rounded">
+        <button className="py-1 md:py-2 hover:shadow-lg hover:bg-white dark:hover:bg-gray-700 rounded duration-75">
           <span className="">
-            {language === "fr" ? <FR_Language /> : <EN_Language />}
+            {language === "en" && <EN_Language />}
+            {language === "fr" && <FR_Language />}
+            {language === "ar" && <AR_Language />}
           </span>
         </button>
       )}
@@ -25,51 +27,17 @@ export default function LanguageSelector() {
         <Dropdown.Item as="button" onClick={() => changeLanguage?.("fr")}>
           <FR_Language />
         </Dropdown.Item>
-        {/* <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
-            External link
-          </Dropdown.Item> */}
+        <Dropdown.Item as="button" onClick={() => changeLanguage?.("ar")}>
+          <AR_Language />
+        </Dropdown.Item>
       </div>
     </Dropdown>
   );
 }
 
-const FR_Language = () => {
-  return (
-    <div className="flex items-center gap-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 32 32"
-      >
-        <path fill="#fff" d="M10 4H22V28H10z"></path>
-        <path
-          d="M5,4h6V28H5c-2.208,0-4-1.792-4-4V8c0-2.208,1.792-4,4-4Z"
-          fill="#092050"
-        ></path>
-        <path
-          d="M25,4h6V28h-6c-2.208,0-4-1.792-4-4V8c0-2.208,1.792-4,4-4Z"
-          transform="rotate(180 26 16)"
-          fill="#be2a2c"
-        ></path>
-        <path
-          d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
-          opacity=".15"
-        ></path>
-        <path
-          d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
-          fill="#fff"
-          opacity=".2"
-        ></path>
-      </svg>
-      <span className="text-sm font-semibold text-neutral">FR</span>
-    </div>
-  );
-};
-
 const EN_Language = () => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center px-3 gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -130,7 +98,78 @@ const EN_Language = () => {
           opacity=".2"
         ></path>
       </svg>
-      <span className="text-sm font-semibold text-neutral">EN</span>
+      <span className="text-sm font-semibold text-neutral">ENGLISH</span>
+    </div>
+  );
+};
+
+const FR_Language = () => {
+  return (
+    <div className="flex items-center px-3 gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 32 32"
+      >
+        <path fill="#fff" d="M10 4H22V28H10z"></path>
+        <path
+          d="M5,4h6V28H5c-2.208,0-4-1.792-4-4V8c0-2.208,1.792-4,4-4Z"
+          fill="#092050"
+        ></path>
+        <path
+          d="M25,4h6V28h-6c-2.208,0-4-1.792-4-4V8c0-2.208,1.792-4,4-4Z"
+          transform="rotate(180 26 16)"
+          fill="#be2a2c"
+        ></path>
+        <path
+          d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
+          opacity=".15"
+        ></path>
+        <path
+          d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
+          fill="#fff"
+          opacity=".2"
+        ></path>
+      </svg>
+      <span className="text-sm font-semibold text-neutral">FRANCAIS</span>
+    </div>
+  );
+};
+
+const AR_Language = () => {
+  return (
+    <div className="flex items-center px-3 gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 32 32"
+      >
+        <rect
+          x="1"
+          y="4"
+          width="30"
+          height="24"
+          rx="4"
+          ry="4"
+          fill="#b33431"
+        ></rect>
+        <path
+          d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
+          opacity=".15"
+        ></path>
+        <path
+          d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
+          fill="#fff"
+          opacity=".2"
+        ></path>
+        <path
+          d="M20.224,21.868l-4.224-3.069-4.224,3.069,1.613-4.965-4.224-3.069h5.221l1.613-4.966,1.613,4.966h5.221l-4.224,3.069,1.613,4.965Zm-3.456-3.626l1.74,1.264-.665-2.045-1.075,.781Zm-2.611-.781l-.665,2.045,1.74-1.264-1.075-.781Zm.293-.902l1.55,1.126,1.55-1.126-.592-1.822h-1.916l-.592,1.822Zm3.456-1.822l.411,1.264,1.74-1.264h-2.151Zm-5.964,0l1.74,1.264,.411-1.264h-2.151Zm3.393-.902h1.329l-.665-2.046-.665,2.046Z"
+          fill="#286038"
+        ></path>
+      </svg>
+      <span className="text-sm font-semibold text-neutral">العربية</span>
     </div>
   );
 };

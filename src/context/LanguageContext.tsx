@@ -3,8 +3,9 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import englishTranslation from "context/translations/en.json";
 import frenchTranslation from "context/translations/fr.json";
+import arabicTranslation from "context/translations/ar.json";
 
-export type ILanguage = "en" | "fr";
+export type ILanguage = "en" | "fr" | "ar";
 
 interface LanguageContextType {
   language: ILanguage;
@@ -18,6 +19,9 @@ i18n.use(initReactI18next).init({
     },
     fr: {
       translation: frenchTranslation,
+    },
+    ar: {
+      translation: arabicTranslation,
     },
   },
   lng: localStorage.getItem("lang") || "en",

@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: any) => {
       };
       setUser(user);
       localStorage.setItem("user", JSON.stringify(user));
-      window.location.href = "/";
+      window.location.href = "/admin";
     } else {
       throw new Error("Creds Incorrect !");
     }
